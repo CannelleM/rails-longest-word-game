@@ -1,0 +1,21 @@
+<div class="m-3">
+<h1>New Game</h1>
+<ul class="list-inline">
+<% @letters.each do |letter| %>
+  <li class="list-inline-item fs-1 bg-primary m-3 text-white size"><%= letter %></li>
+<% end %>
+</ul>
+<form action="/score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%# il faut que le @letters devienne un param pour pouvoir être ré-utilisé dans le controller %>
+  <%= hidden_field_tag :letters, @letters %>
+  <div class="mb-3">
+    <label class="form-label">Type the longest word you can find (in English)? - You can only use each letter once!</label>
+    <input type="text" class="form-control" name="word">
+  </div>
+  <button type="submit" class="btn btn-primary">Play!</button>
+</form>
+</div>
+
+
+<% console %>
